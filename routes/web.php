@@ -1,7 +1,7 @@
 <?php
-use App\Http\Controllers\CarController;
+use App\Http\Controllers\GPTBNController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 
-function () {return view('welcome');});
-Route::resource('cars', CarController::class);
-// Router tương đương với 7 router 
+// Route::get('/', function () {return view('welcome');});
+// Route::resource('cars', CarController::class);
+// // Router tương đương với 7 router 
 // Route::get('cars', [CarController::class, 'index']-> name('cars.index'));
 // Route::get('cars/create ', [CarController::class, 'create]);
 // Route::post('cars ', [CarController::class, 'store]);
@@ -25,3 +24,21 @@ Route::resource('cars', CarController::class);
 // Route::get('cars/{car}/edit ', [CarController::class, 'edit']);
 // Route::delete('cars/{car}  ', [CarController::class, 'destroy]);
 //
+Route::get('GPTBN', function () {
+    return view('GPTBN');
+});
+
+// Route::post('GPTBN', function(Request $request){
+//     $a = $request->input('a');
+//     $b = $request->input('b');
+//     if ($a == 0) 
+//         if ($b == 0) 
+//             $kq = "Vo so nghiem";
+//         else $kq = "Vo nghiem";
+//      else $kq ="Phuong trinh cos nghiem x=: ".-$b/$a;
+//     else $kq = round(-$b/$a,2); //làm tròn 2 số
+//     return view('GPTBN', compact('a', 'b', 'kq'));
+
+// })->name('GPTBN.post');
+Route::post('/GPTBN', [GPTBNController::class,'giaPTBN']);
+// Route::get('/GPTBN', [GPTBNController::class, 'giaPTBN']);
