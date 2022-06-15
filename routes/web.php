@@ -1,7 +1,8 @@
 <?php
-use App\Http\Controllers\GPTBNController;
+
+use App\Http\Controllers\SUMController;
+
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {
+    return view('welcome');
+});
 // Route::resource('cars', CarController::class);
 // // Router tương đương với 7 router 
 // Route::get('cars', [CarController::class, 'index']-> name('cars.index'));
@@ -24,9 +27,9 @@ use Illuminate\Http\Request;
 // Route::get('cars/{car}/edit ', [CarController::class, 'edit']);
 // Route::delete('cars/{car}  ', [CarController::class, 'destroy]);
 //
-Route::get('GPTBN', function () {
-    return view('GPTBN');
-});
+// Route::get('GPTBN', function () {
+//     return view('GPTBN');
+// });
 
 // Route::post('GPTBN', function(Request $request){
 //     $a = $request->input('a');
@@ -40,5 +43,9 @@ Route::get('GPTBN', function () {
 //     return view('GPTBN', compact('a', 'b', 'kq'));
 
 // })->name('GPTBN.post');
-Route::post('/GPTBN', [GPTBNController::class,'giaPTBN']);
+// Route::post('/GPTBN', [GPTBNController::class,'giaPTBN']);
 // Route::get('/GPTBN', [GPTBNController::class, 'giaPTBN']);
+Route::get('sum', function () {
+    return view('sum');
+});
+Route::post('sum', [SUMController::class, 'sum']);
