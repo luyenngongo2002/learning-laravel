@@ -19,16 +19,33 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
       
         <div class="row">
-            @foreach ($cars as $car )
-                <div class="card ml-5" style="width: 18rem;">
-                    <img src="/images/{{ $car['image'] }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">{{ $car['model'] }}</h5>
-                    <p class="card-text">{{ $car['description'] }}</p>
-                    <a href="#" class="btn btn-primary">ADD CARD</a>
-                    </div>
+            
+                <div class="container">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Decription</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    @foreach ($cars as $car )
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{ $car['id'] }}</th>
+                        <td>{{ $car['description'] }}</td>
+                        <td><img src="/images/{{ $car['image'] }}" style="20px"></td>
+                        <td>
+                          <button type="delete">Delete</button>
+                          <button type="delete">Update</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                      @endforeach
+                  </table>
                 </div>
-            @endforeach
+          
         </div>
       
       </body>

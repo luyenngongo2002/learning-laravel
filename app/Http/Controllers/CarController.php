@@ -16,8 +16,13 @@ class CarController extends Controller
     public function index()
     {
         //
-        $cars = Cars::get();
-        return view('index', ['cars'=> $cars]);
+        // $cars = Cars::get();
+        // return view('index', ['cars'=> $cars]);
+
+        $cars = Cars::all();
+        return view('car-list', ['cars'=> $cars]);
+        // return view('index', compact('cars'));
+
     }
 
     /**
@@ -27,7 +32,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('car-create');
     }
 
     /**
@@ -38,7 +43,31 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = '';
+        if($request -> hasFile('image')){
+            $this->validate($request,[
+                'image' =>'mimes:jpg,png,jpeg|max:2048',
+            ],[
+                'image.mimes'=>'Chỉ chấp nhận files ảnh',
+                'image.max' => 'Chỉ chấp nhận files ảnh dưới 2Mb',
+
+            ]);
+            $file =$request ->file(('image'));
+            $name = time().'_'.$file->getClientOriginalName();
+            $destinationPath=public_path('images');
+            $file -> move($destinationPath, $name);
+        }
+        $this->validate($request,[
+            'description'=>'required'
+        ],[
+            'description.reqired' =>'Bạn chưa nhập mô tả'
+        ]);
+        
+        $car=new Cars();
+        $car ->description=$request->description;
+        $car->image=$name;
+        $car->save();
+        return redirect()->route('cars.index')->with('success','Bạn đã cập nhật thành công');
     }
 
     /**

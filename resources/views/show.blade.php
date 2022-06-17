@@ -26,7 +26,7 @@
             <li><img src="/images/{{ $car['image'] }}" alt="..."></li>
         </ul> --}}
       
-
+{{-- 
       <div class="card ml-5" style="width: 18rem;">
         <img src="/images/{{ $car['image'] }}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -34,7 +34,31 @@
           <p class="card-text">{{ $car['description'] }}</p>
           <a href="#" class="btn btn-primary">ADD CARD</a>
         </div>
-      </div>
+      </div> --}}
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Decription</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ $car['id'] }}</th>
+            <td>{{ $car['description'] }}</td>
+            <td><img src="/images/{{ $car['image'] }}" class="card-img-top" alt="..."></td>
+            <td>
+              <button type="delete">Delete</button>
+              <button type="delete">Update</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
       </body>
 
 

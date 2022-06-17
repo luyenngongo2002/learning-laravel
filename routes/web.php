@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SUMController;
+use App\Http\Controllers\CarController;
 
 use Illuminate\Support\Facades\Route;
 /*
@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::resource('cars', CarController::class);
+Route::resource('cars', CarController::class);
+
 // // Router tương đương với 7 router 
 // Route::get('cars', [CarController::class, 'index']-> name('cars.index'));
 // Route::get('cars/create ', [CarController::class, 'create]);
@@ -45,7 +46,9 @@ Route::get('/', function () {
 // })->name('GPTBN.post');
 // Route::post('/GPTBN', [GPTBNController::class,'giaPTBN']);
 // Route::get('/GPTBN', [GPTBNController::class, 'giaPTBN']);
-Route::get('sum', function () {
-    return view('sum');
-});
-Route::post('sum', [SUMController::class, 'sum']);
+
+// Route::get('sum', function () {
+//     return view('sum');
+// });
+// Route::post('sum', [SUMController::class, 'sum']);
+

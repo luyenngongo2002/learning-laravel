@@ -36,7 +36,11 @@ class SUMController extends Controller
                 $result = 'Kết quả phép trừ là:' . ($a - $b);
                 break;
             case 'Nhan':
-                $result = 'Kết quả phép nhân là:' . ($a * $b);
+                if ($a == 0 || $b == 0) {
+                    $result = 0;
+                }else{
+                    $result = 'Kết quả phép nhân là:' . ($a * $b);
+                }
                 break;
             case 'Chia':
                 $result = 'Kết quả phép chia là:' . ($a % $b);
