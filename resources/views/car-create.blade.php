@@ -22,12 +22,24 @@
         </ul>
     </div>
 @endif
-  <a href="{{route('cars.index')}}">Go back to car list</a>
-  <form action="{{route('cars.store')}}" enctype="multipart/form-data" class="was-validated" method='post'>
+  <a href="{{ route('cars.index')}} ">Go back to car list</a>
+  <form action="{{ route('cars.store') }}" enctype="multipart/form-data" class="was-validated" method='post'>
     @csrf
     <div class="form-group">
         <label for="description">Description:</label>
         <input type="text" class="form-control" id="" placeholder="Enter description" name="description">
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" class="form-control" id="" placeholder="Enter description" name="model">
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label for="products_on">Product_on:</label>
+        <input type="date" class="form-control" id="" placeholder="Enter description" name="products_on">
         <div class="valid-feedback"></div>
         <div class="invalid-feedback"></div>
     </div>

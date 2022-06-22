@@ -21,7 +21,12 @@ return new class extends Migration
         //     $table->timestamps();
         // });
         Schema::table('cars', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+            $table->string('model');
+            $table->date('products_on');
             $table->string('image');
+            $table->timestamps();
         });
     }
 
