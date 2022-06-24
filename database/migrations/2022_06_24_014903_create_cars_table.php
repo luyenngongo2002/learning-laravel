@@ -13,18 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        // Schema::create('cars', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('name');
-        //     $table->string('model');
-        //     $table->date('products_on');
-        //     $table->timestamps();
-        // });
-        Schema::table('cars', function (Blueprint $table) {
+
+        Schema::create('cars', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
             $table->string('model');
             $table->date('products_on');
+            $table->unsignedInteger('mf_id');
+            $table->foreign('mf_id')->references('id')->on('mfs')->onUpdate('cascade')->onDelete('cascade');
             $table->string('image');
             $table->timestamps();
         });
@@ -37,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('cars');
+        Schema::dropIfExists('cars');
     }
 };

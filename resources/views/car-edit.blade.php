@@ -25,8 +25,7 @@
         </div>
     @endif --}}
            <a href="{{ route('cars.index') }}">Go back to car list</a>
-           <form action="{{ route('cars.update', $car->id) }}" enctype="multipart/form-data" class="was-validated"
-               method='post'>
+           <form action="{{ route('cars.update', $car->id) }}" enctype="multipart/form-data" class="was-validated" method='post'>
                @csrf
                @method('put')
                <div class="form-group">
@@ -50,7 +49,15 @@
                        name="products_on" value=" {{ isset($car) ? $car->products_on : '' }}">
                    <div class="valid-feedback"></div>
                    <div class="invalid-feedback"></div>
-               </div>
+               </div>        
+               <div class="form-group">
+                    <label for="mf_name">Manufacture:</label>
+                    <select class="js-states browser-default select2" name="mf_id" >
+                        @foreach($mfs as $mf)
+                            <option value="{{ $mf->id }}" {{ $car->mf->id == $mf->id ?  "selected" :"" }}>{{ $mf->mf_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
                <div class="form-group">
                    <label for="image">Image:</label>
                    <img id ="newImage" src="/images/{{ isset($car) ? $car->image : '' }}" alt="">

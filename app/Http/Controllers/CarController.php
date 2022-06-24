@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Car;
+use App\Models\Mf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -21,6 +22,7 @@ class CarController extends Controller
         // return view('index', ['cars'=> $cars]);
 
         $cars = Car::all();
+        // dd($cars);
         return view('car-list', ['cars'=> $cars]);
         // return view('index', compact('cars'));
 
@@ -33,9 +35,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('car-create');
+        return view('car-create', ['mfs'=> Mf::all()]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -72,6 +73,7 @@ class CarController extends Controller
         $car->description = $request->description;
         $car->model = $request->model;
         $car->products_on = $request->products_on;
+        $car->mf_id = $request->mf_id;
         $car->image = $name;
         $car->save();
 
@@ -99,7 +101,8 @@ class CarController extends Controller
     public function edit($id)
     {
         $car = Car::find($id);
-        return view('car-edit', compact('car'));
+        $mfs = Mf::all();
+        return view('car-edit', compact('car','mfs'));
     }
 
     /**
@@ -148,6 +151,7 @@ class CarController extends Controller
         $car->description = $request->description;
         $car->model = $request->model;
         $car->products_on = $request->products_on;
+        $car->mf_id = $request->mf_id;
         $car->image = $name;
         $car->save();
         

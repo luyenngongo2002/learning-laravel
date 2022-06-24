@@ -29,6 +29,8 @@
                 <th scope="col">ID</th>
                 <th scope="col">Decription</th>
                 <th scope="col">Products_on</th>
+                <th scope="col">Manufacture</th>
+
                 <th scope="col">Image</th>
                 <th scope="col">Action</th>
             </tr>
@@ -39,6 +41,7 @@
                 <th scope="row">{{ $car->id }}</th>
                 <td>{{ $car->description }}</td>
                 <td>{{ $car->products_on }}</td>
+                <td>{{ $car->mf->mf_name }}</td> 
                 <td><img src="/images/{{$car-> image}}" style="width: 200px" class="card-img-top" alt="..."></td>
                 <td style="font-size:25px">
                 <button  type="submit" onclick="window.location='{{ route('cars.edit', $car ->id)}}'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
