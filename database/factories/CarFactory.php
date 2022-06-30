@@ -21,11 +21,10 @@ class CarFactory extends Factory
     public function definition()
     {
         return [
-            'image' =>$this->faker ->name(),
             'description' => $this->faker->name(),
             'model' => $this->faker->name(),
             'products_on' => now(),
-            // 'image'=> 'xe'.rand(1,3).'.jpg',//
+            'image'=> 'xe'.rand(1,3).'.jpeg',
             'mf_id'=> rand(1,10)            
         ];
         // Cars::factory()->count(5)->create();
